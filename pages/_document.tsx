@@ -40,9 +40,16 @@ export default class extends Document {
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
           crossOrigin="anonymous"
         />
+
         <link rel="shortcut icon" href="/static/favicon.ico"/>
+        <link href="/static/styles/Main.css" rel="stylesheet"/>
 
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries"></script>
+        
+        <script src='https://code.jquery.com/jquery-3.2.1.js'></script>
+        <script src='https://use.fontawesome.com/b5bf1bd49e.js'></script>
+        <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+        
         {!DEV && FB_TRACKING_ID && (
           <script
             dangerouslySetInnerHTML={{
