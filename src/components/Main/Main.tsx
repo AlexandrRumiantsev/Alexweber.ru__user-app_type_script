@@ -2,11 +2,7 @@ import * as React from 'react'
 import {getMain} from "../../store/actions/main";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../share/Loader/Loader.jsx";
-import {
-  TransitionGroup,
-  CSSTransition
-} from "react-transition-group";
-console.log(TransitionGroup)
+
 
 export const Main = () => {
 

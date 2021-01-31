@@ -1,7 +1,8 @@
 import {Reducer} from 'redux'
 
 const defaultState = {
-  'list' : []
+  'list' : [],
+  'item' : null
 } as ProjectsState
 
 export const reducer: Reducer<ProjectsState> = (state = defaultState, action) => {
@@ -13,13 +14,20 @@ export const reducer: Reducer<ProjectsState> = (state = defaultState, action) =>
         ...state,
         list: payload
       }
+    case ActionTypes.GET_PROJECT:
+      console.log(payload);
+      return {
+        ...state,
+        item: payload
+      }
     default:
       return state
   }
 }
 
 enum ActionTypes {
-   GET_PROJECT_INFO = 'GetProjects'
+   GET_PROJECT_INFO = 'GetProjects',
+   GET_PROJECT = 'GetProject'
 }
 
 export function getProjectInfo(projectInfo) {

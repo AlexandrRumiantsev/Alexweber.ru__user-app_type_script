@@ -1,13 +1,22 @@
 import * as React from 'react'
 import Link from 'next/link'
-import NavLink from 'next/link'
-import * as css from './Nav.css'
-import { useRouter } from "next/router";
-import { useState, useEffect } from 'react';
-const myRef = React.createRef();
 
-export const Nav = props => {
+import * as css from './Nav.css'
+const myRef = React.createRef();
+import { useRouter } from 'next/router'
+
+if (typeof window === 'undefined') console.log('Window is not there')
+else {
+  window['store'] = {};
+  window['store'].menu = myRef;
+}
+
+
+export const Nav = ({positionMenu}) => {
+
   const router = useRouter()
+  console.log(router.route);
+
   const leaveFocusLink = (el) => {
     $(el).parent().find('rect').animate(
       {
@@ -24,9 +33,9 @@ export const Nav = props => {
   }
 
   return (
-    <nav className={css.topMenu}>
+    <nav ref={myRef} className={css.topMenu + ' ' + positionMenu}>
       
-    <NavLink href="/">
+    <Link href="/">
       <div 
         className={css.svgWrapper}>
         <svg className={router.route == "/" ? css.active : ""} height="60" width="320" xmlns="http://www.w3.org/2000/svg">
@@ -40,14 +49,14 @@ export const Nav = props => {
           ГЛАВНАЯ
         </div>
       </div>
-    </NavLink>
-    <NavLink
+    </Link>
+    <Link
       href="/projects"
       >
       <div 
         className={css.svgWrapper}
         >
-        <svg className={router.route == "/projects" ? css.active : ""} height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+        <svg className={router.route == "/projects" || router.route == "/projects/[id]" ? css.active : ""} height="60" width="320" xmlns="http://www.w3.org/2000/svg">
           <rect id="main-rect" className={css.shape} height="60" width="320" />
         </svg>
         <div 
@@ -58,8 +67,8 @@ export const Nav = props => {
           ПОРТФОЛИО
           </div>
       </div>
-    </NavLink>
-    <NavLink href="/papers"
+    </Link>
+    <Link href="/papers"
     
     >
       <div 
@@ -76,7 +85,7 @@ export const Nav = props => {
           СТАТЬИ
         </div>
       </div>
-    </NavLink>
+    </Link>
   </nav>
   )
 }

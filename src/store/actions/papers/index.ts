@@ -8,12 +8,24 @@ export const getPapers  = () => (dispatch, _getState, api) => (
 
 
 axios.get('http://api.alexweber.ru/wp-json/wp/v2/posts')
-   .then(({data}) => dispatch({
-		type: "GetPapers",
-		payload: data
-   }))
+   .then(({data}) => {
+   		return data;
+	})
+	.then((data) => {
+		let newArray = [];
+		data.map((elem) => {
+			axios.get(elem['_links']['wp:featuredmedia'][0]['href']).then((imgData) => {
+				elem.source_url = imgData['data']['source_url'];
+			})
+			newArray.push(elem);
+		})
+	
+		dispatch({
+			type: "GetPapers",
+			payload: newArray
+		})
+	})
 	.catch(function (error) {
-    // handle error
     console.log(error);
   })
 

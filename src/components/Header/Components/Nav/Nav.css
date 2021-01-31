@@ -30,6 +30,7 @@ body{
 .topMenu{
     text-align: center;
     color:white;
+    text-shadow: 1px 1px 2px black, 0 0 1em black;
 }
 .title{
     display:inline;
@@ -44,10 +45,10 @@ body{
     cursor: pointer;
     height: 60px;
     position: relative;
-    top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 320px;
+    margin: 50px 0;
 }
 .shape {
     fill: transparent;
@@ -202,7 +203,7 @@ html .alert-info .main-page{
     color: #2c3e50;
 }
 .topMenu{
-    height: 100px;
+    height: 0px;
     width: 100%;
     position: fixed;
     top: 0;

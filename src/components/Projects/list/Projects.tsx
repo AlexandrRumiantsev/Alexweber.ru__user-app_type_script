@@ -1,21 +1,21 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
-import * as css from './Projects.css'
-
-
-import {getProjects} from "../../store/actions/projects";
-
-import { useSelector, useDispatch } from "react-redux";
-import Loader from "../share/Loader/Loader.jsx";
+import * as css from '../Projects.css'
 import Link from 'next/link'
 
-import { motion } from 'framer-motion';
+
+import {getProjects} from "../../../store/actions/projects";
+
+import { useSelector, useDispatch } from "react-redux";
+import Loader from "../../share/Loader/Loader.jsx";
+
+import { useRouter } from 'next/router'
 
 export const Projects = () => {
   
   const [timeoutFlag, setFlagTimeout] = React.useState(false)
 
-  
+  const router = useRouter();
   const dispatch = useDispatch();
   const list = useSelector(state => state.projects.list);
   
@@ -57,6 +57,7 @@ export const Projects = () => {
       list.map((n) => {
 
         return (
+            <Link href={`/projects/${n.id}`}>
             <figure className={css.card}>
               <img src={`http://api.alexweber.ru/${n.previmg}`} />
               <figcaption>
@@ -64,6 +65,7 @@ export const Projects = () => {
                 <p>{ n.discr }</p>
               </figcaption>
             </figure>
+            </Link>
         )
       })
     }  
