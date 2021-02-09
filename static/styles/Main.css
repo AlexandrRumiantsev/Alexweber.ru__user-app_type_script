@@ -258,6 +258,94 @@ body {
     font-size: 50px;
 }
 
+.teck-container{
+  display: flex;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}
+.teck-container i{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 1;
+    max-width: 50px;
+    max-height: 50px;
+    padding: 8px;   
+    position:absolute;
+    left: 0;
+    opacity: 0;
+}
+
+
+
+
+.teck-container i svg path{
+  
+  width: 300px !important;
+  height: 300px !important;
+  
+  
+}
+
+.teck-container i:nth-child(1){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+}
+.teck-container i:nth-child(2){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 9s;
+}
+.teck-container i:nth-child(3){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 15s;
+}
+.teck-container i:nth-child(4){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 21s;
+}
+.teck-container i:nth-child(5){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 27s;
+}
+.teck-container i:nth-child(6){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 33s;
+}
+.teck-container i:nth-child(7){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 39s;
+}
+.teck-container i:nth-child(8){
+  animation: fall 5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 45s;
+}
+
+
+@keyframes fall{
+  0%{
+    left: 0%;
+    opacity: 0;
+  }
+  50%{
+    left: 45%;
+    opacity: 1;
+  }
+  100%{
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+
 @keyframes text{
   0%{
     color: #000;

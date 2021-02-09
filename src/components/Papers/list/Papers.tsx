@@ -3,12 +3,13 @@ import * as classnames from 'classnames'
 import * as css from './Papers.css'
 
 import styled from 'styled-components';
+import { useRouter } from 'next/router'
 
-import { getPapers } from "../../store/actions/papers";
+import { getPapers } from "../../../store/actions/papers";
 
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../share/Loader/Loader.jsx";
-import Link from '../../../pages/projects/:id/node_modules/next/link'
+import Loader from "../../share/Loader/Loader.jsx";
+import Link from 'next/link'
 
 
 export const Papers = () => {
@@ -41,6 +42,7 @@ export const Papers = () => {
           background: url(${n.source_url}) no-repeat;'
       `;
         return (
+          <Link href={`/papers/${n.id}`}>
           <div className={css.papersContainer}>
           <Paragraph 
               className={css.fonPaper}
@@ -63,6 +65,7 @@ export const Papers = () => {
             </div>
           </Paragraph>
           </div >
+          </Link>
               );
 })
   }

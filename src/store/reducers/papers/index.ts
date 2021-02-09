@@ -6,20 +6,25 @@ const defaultState = {
 
 export const reducer: Reducer<ProjectsState> = (state = defaultState, action) => {
   const {type, payload} = action
-  console.log(type);
   switch (type) {
     case ActionTypes.GET_PAPERS:
       return {
         ...state,
         list: payload
       }
+    case ActionTypes.GET_PAPER:
+      return {
+        ...state,
+        item: payload
+      } 
     default:
       return state
   }
 }
 
 enum ActionTypes {
-   GET_PAPERS = 'GetPapers'
+   GET_PAPERS = 'GetPapers',
+   GET_PAPER = 'GetPaper'
 }
 
 export function getProjectInfo(projectInfo) {

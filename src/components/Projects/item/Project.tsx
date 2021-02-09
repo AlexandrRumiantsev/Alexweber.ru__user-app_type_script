@@ -28,20 +28,23 @@ export const Project = () => {
 
 
 
-    if (typeof window === 'undefined') { console.log('Window is not there') } else{
-        let id = window.location.pathname.split('/').pop()
-        dispatch(getProject(id));
-    }
+    
     
 
     React.useEffect(() => {
+
+        if (typeof window === 'undefined') { console.log('Window is not there') } else{
+          let id = window.location.pathname.split('/').pop()
+          dispatch(getProject(id));
+        } 
+
         setTimeout(function () {
             $('#overlay').animate({ opacity: 0 }, 1000);
             setTimeout(function () {
                 setFlagTimeout(true)
-            }, 500)
+            }, 1000)
         }, 1000)
-    }, [item]);
+    }, []);
 
     if (item == null || timeoutFlag == false) {
         return (
@@ -68,22 +71,7 @@ export const Project = () => {
 
   }
 
-  Project.getInitialProps = async (context) => {
-    const props = {
-        name: '"next.js-typescript-starter-kit" from client'
-      }
-      const server = !!context.req
-      console.log(server);
-      if (server) {
-        props.name = await mockFetchName()
-      }
-    
-      return props
-  }
-
-  async function mockFetchName() {
-    return '"next.js-typescript-starter-kit" from server'
-  }
+ 
 
 export default Project;
 

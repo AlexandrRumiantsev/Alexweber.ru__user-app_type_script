@@ -50,6 +50,10 @@ export default class extends Document {
         <script src='https://use.fontawesome.com/b5bf1bd49e.js'></script>
         <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
         
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"></link>
+
         {!DEV && FB_TRACKING_ID && (
           <script
             dangerouslySetInnerHTML={{
@@ -84,6 +88,7 @@ fbq('track', 'PageView'); `
       <body>
       <Main/>
       <NextScript/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
       </body>
       </html>
     )
