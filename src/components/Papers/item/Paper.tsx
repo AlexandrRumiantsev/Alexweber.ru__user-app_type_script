@@ -1,66 +1,40 @@
 import * as React from 'react'
-import * as classnames from 'classnames'
-import * as css from './Papers.css'
-
-import styled from 'styled-components';
-
+import * as css from './Paper.css'
 import { getPaper } from "../../../store/actions/papers";
+import WithLoader from "../../../hocks/with-loader/with-loader";
+import Head from 'next/head';
 import { useRouter } from 'next/router'
-import { useSelector, useDispatch } from "react-redux";
-import Loader from "../../share/Loader/Loader.jsx";
-import Link from '../../../pages/projects/:id/node_modules/next/link'
-
 
 export const Paper = () => {
 
-    const [timeoutFlag, setFlagTimeout] = React.useState(false)
+  const router = useRouter();
 
-    const router = useRouter();
-    const dispatch = useDispatch();
-    const item = useSelector(state => state.papers['item']);
-    const postVariants = {
-        initial: { scale: 0.96, y: 30, opacity: 0 },
-        enter: { scale: 1, y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.48, 0.15, 0.25, 0.96] } },
-        exit: {
-            scale: 0.6,
-            y: 100,
-            opacity: 0,
-            transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] }
-        }
-    };
+  function createMarkup(html) {
+    return { __html: html };
+  }
 
-    function createMarkup(html) {
-        return {__html: html};
-      }
+  const PageContent = ({ content }) => {
 
-    const PageContent = ({content}) => {
+    return <>
+      <Head>
+        <title>{content.title.rendered}</title>
+        <meta name="description" content={content.excerpt.rendered} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`http://alexweber.ru/${router.asPath}`} />
+        <meta property="og:site_name" content="alexweber" />
+        <meta property="og:image" content={content._embedded['wp:featuredmedia'][0].source_url} />
+        <meta property="og:title" content={content.title.rendered} />
+        <meta property="og:description" content={content.excerpt.rendered}></meta>
+      </Head>
+      <div
+        dangerouslySetInnerHTML={createMarkup(content.content.rendered)}
+        className={css.paperContent}
+      ></div>
+    </>
+  }
 
-        return <div 
-                dangerouslySetInnerHTML={createMarkup(content)} 
-              ></div>
-    }
-
-    
-    
-
-    React.useEffect(() => {
-        if (typeof window === 'undefined') { console.log('Window is not there') } else{
-            let id = window.location.pathname.split('/').pop()
-            dispatch(getPaper(id));
-        }
-        setTimeout(function () {
-            $('#overlay').animate({ opacity: 0 }, 1000);
-            setTimeout(function () {
-                setFlagTimeout(true)
-            }, 1000)
-        }, 1000)
-    }, []);
-
-   
-    console.log(item);
-    return (item == undefined || timeoutFlag == false) 
-          ?  <Loader /> 
-          :  <PageContent content={item.excerpt.rendered}/>
+  return <WithLoader Component={PageContent} get={getPaper(router.query['id'])} block={'papers'} type={'item'} />
 }
 
 export default Paper;

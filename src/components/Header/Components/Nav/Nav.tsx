@@ -2,20 +2,20 @@ import * as React from 'react'
 import Link from 'next/link'
 
 import * as css from './Nav.css'
-const myRef = React.createRef();
+const myRef = React.createRef<HTMLDivElement>();
 import { useRouter } from 'next/router'
 
 if (typeof window === 'undefined') console.log('Window is not there')
 else {
-  window['store'] = {};
-  window['store'].menu = myRef;
+  window['myStore'] = {};
+  window['myStore'].menu = myRef;
 }
 
 
 export const Nav = ({positionMenu}) => {
 
   const router = useRouter()
-  console.log(router.route);
+
 
   const leaveFocusLink = (el) => {
     $(el).parent().find('rect').animate(

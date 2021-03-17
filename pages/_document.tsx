@@ -6,12 +6,18 @@ import {
 } from '../src/constants/env'
 
 export default class extends Document {
+  /*
   static async getInitialProps(...args) {
     const documentProps = await Document.getInitialProps(...args)
     const {req, renderPage} = args[0]
     const page = renderPage()
 
     return {...documentProps, ...page}
+  }
+  */
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps }
   }
 
   render() {
@@ -51,7 +57,7 @@ export default class extends Document {
         <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
         
 
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+      
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"></link>
 
         {!DEV && FB_TRACKING_ID && (

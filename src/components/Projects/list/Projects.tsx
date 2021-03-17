@@ -1,79 +1,57 @@
-import * as React from 'react'
-import * as classnames from 'classnames'
-import * as css from '../Projects.css'
-import Link from 'next/link'
-
-
-import {getProjects} from "../../../store/actions/projects";
-
+import * as React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../../share/Loader/Loader.jsx";
+import Link from 'next/link';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
-import { useRouter } from 'next/router'
+import * as css from '../Projects.css'
+import {getProjects} from "../../../store/actions/projects";
+import Loader from "../../share/Loader/Loader.jsx";
 
 export const Projects = () => {
   
-  const [timeoutFlag, setFlagTimeout] = React.useState(false)
-
   const router = useRouter();
   const dispatch = useDispatch();
-  const list = useSelector(state => state.projects.list);
-  
-  const postVariants = {
-    initial: { scale: 0.96, y: 30, opacity: 0 },
-    enter: { scale: 1, y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.48, 0.15, 0.25, 0.96] } },
-    exit: {
-      scale: 0.6,
-      y: 100,
-      opacity: 0,
-      transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] }
-    }
-  };
-
-
-  
+  const list = useSelector((state:any) => state.projects.list);
  
   React.useEffect(() => {
     dispatch(getProjects());
-    
-    setTimeout(function() { 
-      $('#overlay').animate({ opacity: 0 }, 1000);
-      setTimeout(function() {
-        setFlagTimeout(true)
-      }, 500)
-    }, 1000)
-    
   }, []);
-
-  if (list.length == 0 || timeoutFlag == false) {
+ 
+  if (list.length == 0) {
     return (
       <Loader />
     )
   }
   
   return (
-  <div className={css.cards}>
-      {
-      list.map((n) => {
-
-        return (
-            <Link href={`/projects/${n.id}`}>
-            <figure className={css.card}>
-              <img src={`http://api.alexweber.ru/${n.previmg}`} />
-              <figcaption>
-                <p>{ n.name }</p>
-                <p>{ n.discr }</p>
-              </figcaption>
-            </figure>
-            </Link>
-        )
-      })
-    }  
-  </div>)
-    
-
-
-  }
+    <>
+      <Head>
+          <title>Проекты</title>
+          <meta name="description" content='Портфолио' />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={`http://alexweber.ru/${router.asPath}`} />
+      </Head>
+      <div className={css.cards}>
+          {
+          list.map((n) => {
+            return (
+                <Link href={`/projects/${n.id}`}>
+                  <figure className={css.card}>
+                    <img src={`http://api.alexweber.ru/${n.previmg}`} />
+                    <figcaption>
+                      <p>{ n.name }</p>
+                      <p>{ n.discr }</p>
+                    </figcaption>
+                  </figure>
+                </Link>
+            )
+          })
+        }  
+      </div>
+    </>
+  )
+}
     
   export default Projects;
 

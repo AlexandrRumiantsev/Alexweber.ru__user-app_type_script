@@ -1,13 +1,15 @@
 import {Reducer} from 'redux'
 
 const defaultState = {
-  'page' : []
+  'page' : [],
+  'mainInfo': []
 } as MainState
 
 export const reducer: Reducer<MainState> = (state = defaultState, action) => {
   const {type, payload} = action
   switch (type) {
     case ActionTypes.GET_MAIN:
+      console.log('GET_MAIN');
       return {
         ...state,
         page: payload

@@ -1,11 +1,13 @@
 import {Reducer} from 'redux'
 
 const defaultState = {
-  'list' : []
+  'list' : [],
+  'item' : null
 } as PapersState
 
-export const reducer: Reducer<ProjectsState> = (state = defaultState, action) => {
-  const {type, payload} = action
+export const reducer: Reducer<PapersState> = (state = defaultState, action) => {
+  const {type, payload} = action;
+ 
   switch (type) {
     case ActionTypes.GET_PAPERS:
       return {
@@ -34,6 +36,7 @@ export function getProjectInfo(projectInfo) {
   }
 }
 
-export interface ProjectsState {
-  projectInfo: any
+export interface PapersState {
+  list: any,
+  item: any
 }

@@ -2,12 +2,12 @@ import {Reducer} from 'redux'
 
 const defaultState = {
   'list' : [],
-  'item' : null
+  'item' : null,
+  'projectInfo': null
 } as ProjectsState
 
 export const reducer: Reducer<ProjectsState> = (state = defaultState, action) => {
   const {type, payload} = action
-  console.log(type);
   switch (type) {
     case ActionTypes.GET_PROJECT_INFO:
       return {

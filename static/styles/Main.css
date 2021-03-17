@@ -1,3 +1,8 @@
+main{
+  height: 100vh;
+}
+
+
 .content__skill-box a{
   color:#949494;
   text-decoration: none;
@@ -14,13 +19,14 @@
   z-index: -1;
 }
 #main-page{
-  margin-top: -5.5%;
+  margin-top: -10%;
 	height: 100vh;
 	width:100%;
 	position:relative;
 	display:flex;
 	justify-content: center;
 	align-items: center;
+  overflow: hidden;
 }
 #main-page h1{
   width:100%;
@@ -32,6 +38,14 @@
 	width:100%;
       padding: 0;
     margin: 0;
+}
+
+.main-page__img{
+  width: 80%;
+    position: absolute;
+    bottom: -150px;
+    left: -570px;
+    animation: slide-from-right 2s  both;
 }
 
 
@@ -87,6 +101,14 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+@keyframes slide-from-right{
+  from{
+    left:-250%;
+  }
+  to{
+    left: -30%;
+  }
+}
 @keyframes bounce-top {
   0% {
     transform: translateY(-45px);
@@ -172,6 +194,7 @@ body {
 
 
 
+
 .anim-name {
   background-image: linear-gradient(transparent 50%, black 50%);
   background-size: 200% 200%;
@@ -245,7 +268,6 @@ body {
   font-size: 60px;
   font-weight: 700;
   letter-spacing: 8px;
-  margin-bottom: 10px;
   background: #000;
   position: relative;
   animation: text 3s 1;
@@ -255,7 +277,8 @@ body {
 .text2{
   text-shadow: 0px 3px 0px #000, 0px 14px 10px rgba(0,0,0,0.15), 0px 24px 2px rgba(0,0,0,0.1), 0px 34px 30px rgba(0,0,0,0.1);
     color: #fa7300;
-    font-size: 50px;
+    font-size: 33px;
+    letter-spacing: 1;
 }
 
 .teck-container{
@@ -339,8 +362,8 @@ body {
     left: 45%;
     opacity: 1;
   }
-  100%{
-    left: 100%;
+  80%{
+    left: 80%;
     opacity: 0;
   }
 }
@@ -349,15 +372,17 @@ body {
 @keyframes text{
   0%{
     color: #000;
-    margin-bottom: -65px;
+    margin-bottom: -90px;
   }
   30%{
-    letter-spacing: 25px;
-    margin-bottom: -65px;
+    margin-bottom: -90px;
   }
-  85%{
+  80%{
+    margin-bottom: -30px;
+  }
+  90%{
     letter-spacing: 8px;
-    margin-bottom: -40px;
+    margin-bottom: 10px;
   }
 }
 
