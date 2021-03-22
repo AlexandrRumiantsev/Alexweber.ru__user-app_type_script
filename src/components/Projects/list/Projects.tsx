@@ -4,20 +4,36 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { useState } from 'react';
+
+
+
 import * as css from '../Projects.css'
 import {getProjects} from "../../../store/actions/projects";
 import Loader from "../../share/Loader/Loader.jsx";
 
 export const Projects = () => {
   
+
+
   const router = useRouter();
   const dispatch = useDispatch();
-  const list = useSelector((state:any) => state.projects.list);
+
  
+   
+
+
   React.useEffect(() => {
-    dispatch(getProjects());
-  }, []);
- 
+
+   dispatch(
+    getProjects()
+   )
+
+   
+  }, [dispatch])
+
+  const list = useSelector((state:any) => state.projects.list);
+  
   if (list.length == 0) {
     return (
       <Loader />
@@ -36,7 +52,7 @@ export const Projects = () => {
           {
           list.map((n) => {
             return (
-                <Link href={`/projects/${n.id}`}>
+                <Link key={n.id} href={`/projects/${n.id}`}>
                   <figure className={css.card}>
                     <img src={`http://api.alexweber.ru/${n.previmg}`} />
                     <figcaption>

@@ -5,19 +5,7 @@ export async function getStaticPaths() {
   const response = await fetch(
     'http://api.alexweber.ru/wp-json/wp/v2/posts?_embed'
   )
-  /*
-  const postList = await response.json()
-  return {
-    paths: [ postList.map((post) => {
-      return {
-        params: {
-          id: `...${post.id}`,
-        },
-      }
-    })],
-    fallback: false,
-  }
-  */
+
   const postList = await response.json()
   const paths = postList.map((post) => {
     return {

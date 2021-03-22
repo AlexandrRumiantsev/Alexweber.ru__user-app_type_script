@@ -17,7 +17,7 @@ export const Papers = () => {
               background: url(${n._embedded['wp:featuredmedia'][0].source_url}) no-repeat;'
           `;
           return (
-            <Link href={`/papers/${n.id}`}>
+            <Link key={n.id} href={`/papers/${n.id}`}>
               <div className={css.papersContainer}>
                 <Paragraph
                   className={css.fonPaper}

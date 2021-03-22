@@ -5,8 +5,9 @@ export const getProjects  = () => (dispatch, _getState, api) => (
 	.then(({data}) => dispatch({
 			type: "GetProjects",
 			payload: data
-	}))
-		.catch(function (error) {
+	})).then(() => {
+		
+	}).catch(function (error) {
 		console.log(error);
 	}) 
 )
