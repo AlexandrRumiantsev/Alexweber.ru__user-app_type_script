@@ -5,17 +5,15 @@ import * as css from './Nav.css'
 const myRef = React.createRef<HTMLDivElement>();
 import { useRouter } from 'next/router'
 
-if (typeof window === 'undefined') console.log('Window is not there')
-else {
-  window['myStore'] = {};
-  window['myStore'].menu = myRef;
-}
-
-
-export const Nav = ({positionMenu}) => {
+export const NavDesctop = ({positionMenu}) => {
 
   const router = useRouter()
 
+  if (typeof window === 'undefined') console.log('Window is not there')
+  else {
+    window['myStore'] = {};
+    window['myStore'].menu = myRef;
+  }
 
   const leaveFocusLink = (el) => {
     $(el).parent().find('rect').animate(

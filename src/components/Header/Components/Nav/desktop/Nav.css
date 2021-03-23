@@ -209,6 +209,10 @@ html .alert-info .main-page{
     top: 0;
     z-index: 999999;
 }
+nav img{
+  max-width: 45px;
+  padding: 4px;  
+}
 .topMenu a{
     padding: 10px;
     margin: 10px;
@@ -254,8 +258,8 @@ html .alert-info .main-page{
     }*/
 }
 @media (max-width: 1055px) {
- /* Мобильное меню */   
- .topMenu {display: none;}
+ /* Мобильное меню   
+ .topMenu {display: none;}*/ 
  .topMenu__mobile{
     display: block;
     }
