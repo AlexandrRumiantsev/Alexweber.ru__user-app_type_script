@@ -1,0 +1,26 @@
+body, .__next{
+    background: black;
+}
+@media (max-width: 1055px) {
+    body, .__next{
+        background: unset;
+    } 
+    *, *:before, *:after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+   }
+   html, body {
+       height: 100%;
+       POSITION: ABSOLUTE;
+       WIDTH: 100%;
+   }
+   body:before, body:after {
+        content: "";
+        display: block;
+        background: #ebfbff;
+   }
+   body:after {
+        background: #1539cf;
+   }
+}

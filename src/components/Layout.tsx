@@ -3,6 +3,7 @@ import {Header} from './Header/Header'
 import Head from 'next/head'
 import { useState } from 'react';
 
+import WithAdaptiv from '../hocks/with-adaptiv/with-adaptiv';
 
     
    
@@ -40,7 +41,21 @@ export const Layout: React.FunctionComponent = props => {
   if (typeof window === 'undefined') console.log('Window is not there')
     else window.addEventListener('scroll', handleScroll);
   
-  
+  const SmokeOverlay = () => {
+    return(
+      <div id="smoke">
+        <video autoPlay loop muted >
+          <source src="../../static/Fog.mp4"></source>
+        </video>
+      </div>
+    )
+  }
+  const WhiteOverlay = () => {
+    return(
+      <div className="white-overlay">
+      </div>
+    )
+  }
 
   return (
     <div id="layout">
@@ -54,11 +69,10 @@ export const Layout: React.FunctionComponent = props => {
     <main>
       {props.children}
     </main>
-    <div id="smoke">
-      <video autoPlay loop muted >
-        <source src="../../static/Fog.mp4"></source>
-      </video>
-    </div>
+    <WithAdaptiv
+      Desctop={SmokeOverlay}
+      Mobile={WhiteOverlay}
+    />
   </div>
   )
   

@@ -19,7 +19,6 @@ main{
   z-index: -1;
 }
 #main-page{
-  margin-top: -10%;
 	height: 100vh;
 	width:100%;
 	position:relative;
@@ -46,12 +45,6 @@ main{
     bottom: -150px;
     left: -570px;
     animation: slide-from-right 2s  both;
-}
-
-
-body {
-  color: rgba(255, 255, 255, 0.5);
-  text-align: center;
 }
 
 .content p {
@@ -404,5 +397,185 @@ body {
   100% { 
     height: 0;
     background-color: none;
+  }
+}
+
+
+@media (max-width: 970px) {
+  
+  
+  @keyframes animatetotop {
+    0% {
+      content: 'Р';
+    }
+    2% {
+      content: 'РУ';
+    }
+    4% {
+      content: 'РУМ';
+    }
+    6% {
+      content: 'РУМЯ';
+    }
+    8% {
+      content: 'РУМЯН';
+    }
+    10% {
+      content: 'РУМЯНЦ';
+    }
+    12% {
+      content: 'РУМЯНЦЕ';
+    }
+    14% {
+      content: 'РУМЯНЦЕВ';
+    }
+    16% {
+      content: 'РУМЯНЦЕВ А';
+    }
+    18% {
+      content: 'РУМЯНЦЕВ АЛ';
+    }
+    20% {
+      content: 'РУМЯНЦЕВ АЛЕ';
+    }
+    22% {
+      content: 'РУМЯНЦЕВ АЛЕК';
+    }
+    24% {
+      content: 'РУМЯНЦЕВ АЛЕКС';
+    }
+    26% {
+      content: 'РУМЯНЦЕВ АЛЕКСА';
+    }
+    28% {
+      content: 'РУМЯНЦЕВ АЛЕКСАН';
+    }
+    30% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНД';
+    }
+    32% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР';
+    }
+    34% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР ';
+    }
+    36% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  F';
+    }
+    38% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Fr';
+    }
+    40% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Fro';
+    }
+    42% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Fron';
+    }
+    44% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Front';
+    }
+    46% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Fronte';
+    }
+    48% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Fronten';
+    }
+    50% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend';
+    }
+    52% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-';
+    }
+    54% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-D';
+    }
+    56% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-De';
+    }
+    58% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Dev';
+    }
+    60% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Deve';
+    }
+    62% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Devel';
+    }
+    64% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Develo';
+    }
+    66% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Develop';
+    }
+    68% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Develope';
+    }
+    70% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Developer';
+    }
+    100% {
+      content: 'РУМЯНЦЕВ АЛЕКСАНДР  Frontend-Developer';
+    }
+  }
+  @keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
+   
+  @-webkit-keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
+  .main-page__img{
+    width: unset;
+    bottom: unset;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+    z-index: -1;
+  }
+  .white-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    top: 0;
+    background: rgba(255,255,255, 0.9);
+  }
+  .text1{
+    max-width: 50%;
+    MARGIN: AUTO;
+    TEXT-ALIGN: CENTER;
+    Letter-spacing: UNSET;
+    background: unset;
+  }
+  #main-page .content .container *{
+    display: none;
+  }
+  #main-page .content .container::before{
+    font-family: 'Caveat', cursive;
+    content: '';
+    color: black;
+    animation: animatetotop 10s linear infinite alternate;
+    animation-fill-mode:forwards;
+
+    font-size: 40px;
+  }
+  #main-page .content .container::after{
+    content: '_';
+    color: black;
+    font-size: 40px;
+    animation: blinker 0.5s linear infinite alternate ;
+  }
+  .content {
+    animation: unset;
+  }
+  .teck-container{
+    display: -webkit-box;
+  }
+  .teck-container i {
+    position: absolute;
+    background: #ebebeb;
+    padding: 10px;
+    border-radius: 10px;
   }
 }

@@ -264,23 +264,7 @@ nav img{
     display: block;
     }
 
- *, *:before, *:after {
-     box-sizing: border-box;
-     margin: 0;
-     padding: 0;
-}
-html, body {
-     height: 100%;
-}
-body:before, body:after {
-     content: "";
-     display: block;
-     
-     background: #ebfbff;
-}
-body:after {
-     background: #1539cf;
-}
+
 /* MAIN VARIABLES FOR CUSTOMIZATION */
 /* -------------------------------- */
 .nav {
