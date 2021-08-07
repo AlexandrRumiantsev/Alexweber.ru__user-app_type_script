@@ -6,8 +6,6 @@ import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
 import Head from 'next/head';
 
-
-
 export const Project = () => {
 
   const router = useRouter();
@@ -48,10 +46,6 @@ export const Project = () => {
       </h1>
     </div >
     </>)
-
-
-
-
 }
 
 

@@ -4,13 +4,15 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { useState } from 'react';
 
 
 
 import * as css from '../Projects.css'
 import {getProjects} from "../../../store/actions/projects";
 import Loader from "../../share/Loader/Loader.jsx";
+
+import Images from "../../share/Images/Images.tsx";
+import Pagination from "../../share/Pagination/Pagination";
 
 export const Projects = () => {
   
@@ -40,6 +42,7 @@ export const Projects = () => {
     )
   }
   
+
   return (
     <>
       <Head>
@@ -49,21 +52,10 @@ export const Projects = () => {
           <meta property="og:url" content={`http://alexweber.ru/${router.asPath}`} />
       </Head>
       <div className={css.cards}>
-          {
-          list.map((n) => {
-            return (
-                <Link key={n.id} href={`/projects/${n.id}`}>
-                  <figure className={css.card}>
-                    <img src={`http://api.alexweber.ru/${n.previmg}`} />
-                    <figcaption>
-                      <p>{ n.name }</p>
-                      <p>{ n.discr }</p>
-                    </figcaption>
-                  </figure>
-                </Link>
-            )
-          })
-        }  
+        <Pagination 
+          list={list}
+          limit={4}
+        />
       </div>
     </>
   )

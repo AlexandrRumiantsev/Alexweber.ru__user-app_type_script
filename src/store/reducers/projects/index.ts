@@ -20,6 +20,13 @@ export const reducer: Reducer<ProjectsState> = (state = defaultState, action) =>
         ...state,
         item: payload
       }
+    case 'SET_PROJECTS':
+        console.log(payload);
+        break;
+      /*return {
+        ...state,
+        item: payload
+      }*/
     default:
       return state
   }

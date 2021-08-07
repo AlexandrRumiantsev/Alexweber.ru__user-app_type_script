@@ -8,6 +8,7 @@ import {
   CSSTransition
 } from "react-transition-group";
 
+
 import { AnimatePresence } from 'framer-motion';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
