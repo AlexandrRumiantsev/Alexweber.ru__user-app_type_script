@@ -5,9 +5,6 @@ out
 pages/**/*.js
 pages/**/*.map
 pages/**/*.jsx
-src/**/*.js
-src/**/*.map
-src/**/*.jsx
 storybook-static
 .DS_Store
 
