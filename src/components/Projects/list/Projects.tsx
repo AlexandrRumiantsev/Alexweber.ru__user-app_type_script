@@ -12,7 +12,7 @@ import {getProjects} from "../../../store/actions/projects";
 import Loader from "../../share/Loader/Loader.jsx";
 
 import Images from "../../share/Images/Images.tsx";
-import Pagination from "../../share/Pagination/Pagination";
+//import Pagination from "../../share/Pagination/Pagination";
 
 export const Projects = () => {
   
@@ -52,10 +52,7 @@ export const Projects = () => {
           <meta property="og:url" content={`http://alexweber.ru/${router.asPath}`} />
       </Head>
       <div className={css.cards}>
-        <Pagination 
-          list={list}
-          limit={4}
-        />
+        xx
       </div>
     </>
   )
