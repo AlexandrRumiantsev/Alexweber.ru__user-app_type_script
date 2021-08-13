@@ -12,18 +12,17 @@ import {getProjects} from "../../../store/actions/projects";
 import Loader from "../../share/Loader/Loader.jsx";
 
 import Images from "../../share/Images/Images.tsx";
-//import Pagination from "../../share/Pagination/Pagination";
+import MyComponent from "../../../../../react-aw-lib/dist";
+import {withPagination, createPaginationPanel, HelloWorldFunc} from "../../../hocks/with-pagination/with-pagination";
+import { useState, useMemo } from 'react';
 
 export const Projects = () => {
-  
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [countOnPage, setCountOnPage] = useState(4);
 
   const router = useRouter();
   const dispatch = useDispatch();
-
- 
-   
-
 
   React.useEffect(() => {
 
@@ -35,13 +34,14 @@ export const Projects = () => {
   }, [dispatch])
 
   const list = useSelector((state:any) => state.projects.list);
+
+  const click = (page) => { console.log(setCurrentPage)}
   
   if (list.length == 0) {
     return (
       <Loader />
     )
   }
-  
 
   return (
     <>
@@ -52,8 +52,24 @@ export const Projects = () => {
           <meta property="og:url" content={`http://alexweber.ru/${router.asPath}`} />
       </Head>
       <div className={css.cards}>
-        xx
+        {withPagination.render(countOnPage, list, (sorteredList) => {
+              return sorteredList[currentPage].map((n) => {
+                return (
+                    <Link key={n.id} href={`/projects/${n.id}`}>
+                      <figure className={css.card}>
+                        <img src={`http://api.alexweber.ru/${n.previmg}`} />
+                        <figcaption>
+                          <p>{ n.name }</p>
+                          <p>{ n.discr }</p>
+                        </figcaption>
+                      </figure>
+                    </Link>
+                )
+              })
+        })}
+        <HelloWorldFunc setCurrentPage={setCurrentPage} countOnPage={countOnPage} items={list} user={'thiom'} currentPage={currentPage}/>
       </div>
+      
     </>
   )
 }
