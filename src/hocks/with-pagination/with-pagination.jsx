@@ -50,9 +50,6 @@ export const withPagination = {
 
         return sortArray
     },
-    createPaginationPanel: (count, data, cb) => {
-        return HelloWorldFunc
-    },
     render: (countOnPage, data, callback) => {
 
         return callback(

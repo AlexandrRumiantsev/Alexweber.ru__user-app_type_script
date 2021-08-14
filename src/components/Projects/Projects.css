@@ -346,6 +346,40 @@ main figure{
      transition: .5s linear;
     background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
   }
+
+
+
+  .transfom{
+    transform: translate(350px,0)
+  }
+
+
+
+
+
+
+  .cards-enter {
+    font-size: 60pt;
+    transform: rotate(90deg);
+  }
+  
+  .cards-enter.cards-enter-active {
+    opacity: 1;
+    font-size: large;
+    transform: rotate(0deg);
+    transition: opacity 500ms ease-in, font-size 500ms ease-in, transform 500ms ease-in;
+  }
+  
+  .cards-leave {
+    opacity: 1;
+  }
+  
+  .cards-leave.cards-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
+  
+
   @keyframes hidden{
     0% {
        margin-top: 0%;
