@@ -29,8 +29,24 @@ export const Projects = () => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [countOnPage, setCountOnPage] = useState(4);
+  const [ref, setRef] = useState(React.createRef());
 
 
+  const setterCurrentPage = (page) => {
+    new Promise((resolve, reject) => {
+    ref.current.setAttribute("style", "transform: translate(0, 130%);transition: 5s;");
+    
+    setTimeout(() => {
+      resolve();
+    }, 3000);  
+
+    }).then(() => {
+      setCurrentPage(page)
+      console.log(ref);
+      ref.current.setAttribute("style", "transform: translate(0, 0);transition: 5s;");
+    })
+    
+  }
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -64,7 +80,7 @@ export const Projects = () => {
           <meta property="og:url" content={`http://alexweber.ru/${router.asPath}`} />
       </Head>
 
-        <div className={css.cards} >
+        <div ref={ref} className={css.cards} >
           {withPagination.render(countOnPage, list, (sorteredList) => {
                 return sorteredList[currentPage].map((n) => {
                   return (
@@ -85,7 +101,7 @@ export const Projects = () => {
                 })
           })}
         <HelloWorldFunc 
-          setCurrentPage={setCurrentPage} 
+          setCurrentPage={setterCurrentPage} 
           countOnPage={countOnPage} 
           items={list} 
           user={'thiom'} 
