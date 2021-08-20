@@ -4,6 +4,7 @@ import Link from 'next/link'
 import * as css from './Nav.css'
 const myRef = React.createRef<HTMLDivElement>();
 import { useRouter } from 'next/router'
+import { MENU } from '../../../const'
 
 export const NavDesctop = ({positionMenu}) => {
 
@@ -32,58 +33,33 @@ export const NavDesctop = ({positionMenu}) => {
 
   return (
     <nav ref={myRef} className={css.topMenu + ' ' + positionMenu}>
-      
-    <Link href="/">
-      <div 
-        className={css.svgWrapper}>
-        <svg className={router.route == "/" ? css.active : ""} height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-          <rect id="main-rect" className={css.shape} height="60" width="320" />
-        </svg>
-        <div 
-          onMouseLeave={(e) => leaveFocusLink(e.target)}
-          onMouseEnter={(e) => enterFocusLink(e.target)} 
-          className={css.text}
-        >
-          ГЛАВНАЯ
-        </div>
-      </div>
-    </Link>
-    <Link
-      href="/projects"
-      >
-      <div 
-        className={css.svgWrapper}
-        >
-        <svg className={router.route == "/projects" || router.route == "/projects/[id]" ? css.active : ""} height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-          <rect id="main-rect" className={css.shape} height="60" width="320" />
-        </svg>
-        <div 
-          onMouseLeave={(e) => leaveFocusLink(e.target)}
-          onMouseEnter={(e) => enterFocusLink(e.target)}
-          className={css.text}
-        >
-          ПОРТФОЛИО
+    { Object.keys(MENU).map((el) => (
+        <Link href={MENU[el].LINK}>
+          <div 
+            className={css.svgWrapper}>
+            <svg 
+                className={router.route == MENU[el].LINK ? css.active : ""} 
+                height="60" 
+                width="320" 
+                xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect 
+                id="main-rect" 
+                className={css.shape} 
+                height="60" 
+                width="320" 
+              />
+            </svg>
+            <div 
+              onMouseLeave={(e) => leaveFocusLink(e.target)}
+              onMouseEnter={(e) => enterFocusLink(e.target)} 
+              className={css.text}
+            >
+              {MENU[el].NAME}
+            </div>
           </div>
-      </div>
-    </Link>
-    <Link href="/papers"
-    
-    >
-      <div 
-        className={css.svgWrapper}
-        >
-        <svg className={router.route == "/papers" ? css.active : ""} height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-          <rect id="main-rect" className={css.shape} height="60" width="320" />
-        </svg>
-        <div 
-          className={css.text}
-          onMouseLeave={(e) => leaveFocusLink(e.target)}
-          onMouseEnter={(e) => enterFocusLink(e.target)}
-        >
-          СТАТЬИ
-        </div>
-      </div>
-    </Link>
+        </Link>
+    ))}
   </nav>
   )
 }
