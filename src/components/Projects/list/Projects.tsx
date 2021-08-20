@@ -29,11 +29,11 @@ export const Projects = () => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [countOnPage, setCountOnPage] = useState(4);
-  const [ref, setRef] = useState(React.createRef());
+  const [ref, setRef] = useState(React.createRef<HTMLInputElement>());
 
 
   const setterCurrentPage = (page) => {
-    new Promise((resolve, reject) => {
+    new Promise<void>((resolve, reject) => {
     ref.current.setAttribute("style", "transform: translate(0, 130%);transition: 5s;");
     
     setTimeout(() => {
@@ -43,7 +43,7 @@ export const Projects = () => {
     }).then(() => {
       setCurrentPage(page)
       console.log(ref);
-      ref.current.setAttribute("style", "transform: translate(0, 0);transition: 5s;");
+      ref.current.setAttribute("style", "transform: translate(0, 0);transition: 5s;") as unknown as HTMLElement;;
     })
     
   }

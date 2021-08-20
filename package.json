@@ -45,6 +45,7 @@
     "react-redux": "^7.1.0-rc.1",
     "react-redux-typed-hooks": "^1.0.1",
     "react-router-dom": "^5.2.0",
+    "react-simple-animate": "^3.3.12",
     "react-spring": "^9.2.4",
     "react-transition-group": "^1.2.1",
     "redux": "^4.0.5",

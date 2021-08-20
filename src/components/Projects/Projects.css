@@ -378,6 +378,10 @@ main figure{
     opacity: 0.01;
     transition: opacity 300ms ease-in;
   }
+
+  .cards img{
+    min-height: 100%;
+  }
   
 
   @keyframes hidden{
