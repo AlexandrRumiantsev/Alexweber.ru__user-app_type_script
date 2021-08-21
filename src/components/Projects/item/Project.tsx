@@ -5,6 +5,7 @@ import Loader from "../../share/Loader/Loader.jsx";
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
 import Head from 'next/head';
+import {BASE_URL} from '../../../const'
 
 export const Project = () => {
 
@@ -36,7 +37,7 @@ export const Project = () => {
     <div
       className={css.projectsDetail}
     >
-      <img className={css.detailImg} src={`http://api.alexweber.ru/${item['fullimg']}`} />
+      <img className={css.detailImg} src={`${BASE_URL}${item['fullimg']}`} />
       <h1>
         <a
           href={item.url}

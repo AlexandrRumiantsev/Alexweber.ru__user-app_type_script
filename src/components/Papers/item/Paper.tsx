@@ -4,18 +4,15 @@ import { getPaper } from "../../../store/actions/papers";
 import WithLoader from "../../../hocks/with-loader/with-loader";
 import Head from 'next/head';
 import { useRouter } from 'next/router'
+import {createMarkup} from '../../../utils/createMarkup'
+
 
 export const Paper = () => {
 
   const router = useRouter();
 
-  function createMarkup(html) {
-    return { __html: html };
-  }
-
-  const PageContent = ({ content }) => {
-
-    return <>
+  const PageContent = ({ content }) => (
+  <>
       <Head>
         <title>{content.title.rendered}</title>
         <meta name="description" content={content.excerpt.rendered} />
@@ -32,7 +29,7 @@ export const Paper = () => {
         className={css.paperContent}
       ></div>
     </>
-  }
+  )
 
   return <WithLoader Component={PageContent} get={getPaper(router.query['id'])} block={'papers'} type={'item'} />
 }
