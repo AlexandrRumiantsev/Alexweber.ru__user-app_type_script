@@ -6,7 +6,7 @@ import * as React from 'react'
 
 var _this = this;
 
-export function HelloWorldFunc(props) {
+export function PaginationPanel(props) {
     return <ul className={css.pagPanel}>
         {Array.prototype.map.call(
             Object.keys(withPagination.sortForPagination( props.countOnPage, props.items)),

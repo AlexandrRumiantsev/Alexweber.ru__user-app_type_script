@@ -5,25 +5,15 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-
-
-
 import * as css from '../Projects.css'
 import {getProjects} from "../../../store/actions/projects";
 import Loader from "../../share/Loader/Loader.jsx";
 import Images from "../../share/Images/Images";
 
-//import {TransitionGroup}  from "react-transition-group";
-//import {TransitionGroup, CSSTransitionGroup}  from "react-transition-group";
-//import CSSTransition  from "react-transition-group";
-
-import { animated, useTransition } from 'react-spring'
-import ReactCSSTransitionGroup from 'react-transition-group'; 
-
-import {withPagination, HelloWorldFunc} from "../../../hocks/with-pagination/with-pagination";
+import {withPagination, PaginationPanel} from "../../../hocks/with-pagination/with-pagination";
 import { useState, useMemo } from 'react';
 
-
+import type { ProjectState } from '../../../@types/projects';
 
 export const Projects = () => {
 
@@ -34,7 +24,11 @@ export const Projects = () => {
 
   const setterCurrentPage = (page) => {
     new Promise<void>((resolve, reject) => {
-    ref.current.setAttribute("style", "transform: translate(0, 130%);transition: 5s;");
+
+    ref.current.setAttribute(
+      "style", 
+      "transform: translate(0, 130%);transition: 5s;"
+    );
     
     setTimeout(() => {
       resolve();
@@ -42,8 +36,11 @@ export const Projects = () => {
 
     }).then(() => {
       setCurrentPage(page)
-      console.log(ref);
-      ref.current.setAttribute("style", "transform: translate(0, 0);transition: 5s;") as unknown as HTMLElement;;
+      ref.current
+        .setAttribute(
+          "style", 
+          "transform: translate(0, 0);transition: 5s;"
+        ) as unknown as HTMLElement;;
     })
     
   }
@@ -52,17 +49,13 @@ export const Projects = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-
-   dispatch(
-    getProjects()
-   )
-
-   
+    dispatch(
+      getProjects()
+    )
   }, [dispatch])
 
 
-
-  const list = useSelector((state:any) => state.projects.list);
+  const list = useSelector((state:ProjectState) => state.projects.list);
   
   if (list.length == 0) {
     return (
@@ -100,11 +93,10 @@ export const Projects = () => {
                   )
                 })
           })}
-        <HelloWorldFunc 
+        <PaginationPanel 
           setCurrentPage={setterCurrentPage} 
           countOnPage={countOnPage} 
           items={list} 
-          user={'thiom'} 
           currentPage={currentPage}
         />
         </div>

@@ -10,7 +10,7 @@ module.exports = {
     ],
     rules:  {
       // Overwrite rules specified from the extended configs e.g. 
-      // "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-function-return-type": 2,
       "react/prop-types": "off"
     }
   }

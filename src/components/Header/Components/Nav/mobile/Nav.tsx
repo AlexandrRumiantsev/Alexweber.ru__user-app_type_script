@@ -41,7 +41,7 @@ export const NavMobile = ({ positionMenu }) => {
           <div ref={menuRef} className={css.navItem}>
             {
               Object.keys(MENU).map((el) => (
-                <Link href={MENU[el].LINK}>
+                <Link key={el} href={MENU[el].LINK}>
                   <img src={MENU[el].IMG_PATH} />
                 </Link>
               ))

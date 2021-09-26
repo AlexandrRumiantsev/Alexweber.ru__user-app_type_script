@@ -14,10 +14,12 @@
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
   },
   "exclude": [
     "out",
