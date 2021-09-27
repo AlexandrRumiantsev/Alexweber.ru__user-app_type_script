@@ -4,13 +4,10 @@ import styled from 'styled-components';
 
 import * as css from './Papers.css'
 import { getPapers } from "../../../store/actions/papers";
-import WithLoader from "../../../hocks/with-loader/with-loader";
+import {WithLoader} from "../../../hocks/with-loader/with-loader";
 
-export const Papers = () => {
-
-  const PageContent = ({ content }) => {
-
-    return (<div className={css.paperPage}>
+const Papers = ({content}) => (
+    <div className={css.paperPage}>
       {
         content.map((n) => {
           let Paragraph = styled.div`
@@ -43,10 +40,7 @@ export const Papers = () => {
         })
       }
     </div >
-    )
-  }
-  return <WithLoader Component={PageContent} get={getPapers()} block={'papers'} type={'list'} />
-}
+  )
 
-export default Papers;
+export default WithLoader(Papers, getPapers, 'papers', 'list' );
 

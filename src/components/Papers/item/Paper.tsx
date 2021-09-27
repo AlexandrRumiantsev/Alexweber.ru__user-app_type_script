@@ -1,18 +1,18 @@
 import * as React from 'react'
 import * as css from './Paper.css'
 import { getPaper } from "../../../store/actions/papers";
-import WithLoader from "../../../hocks/with-loader/with-loader";
+import {WithLoader} from "../../../hocks/with-loader/with-loader";
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import {createMarkup} from '../../../utils/createMarkup'
 
 
-export const Paper = () => {
+export const Paper = ({ content }) => {
 
   const router = useRouter();
 
-  const PageContent = ({ content }) => (
-  <>
+  return(
+    <>
       <Head>
         <title>{content.title.rendered}</title>
         <meta name="description" content={content.excerpt.rendered} />
@@ -30,9 +30,7 @@ export const Paper = () => {
       ></div>
     </>
   )
-
-  return <WithLoader Component={PageContent} get={getPaper(router.query['id'])} block={'papers'} type={'item'} />
 }
 
-export default Paper;
+export default WithLoader(Paper, getPaper, 'papers', 'item');
 
