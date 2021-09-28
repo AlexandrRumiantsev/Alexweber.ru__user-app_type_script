@@ -15,7 +15,9 @@ import { useState, useMemo } from 'react';
 
 import type { ProjectState } from '../../../@types/projects';
 
-export const Projects = () => {
+import {WithLoader} from "../../../hocks/with-loader/with-loader";
+
+const Projects = ({content}) => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [countOnPage, setCountOnPage] = useState(4);
@@ -45,24 +47,7 @@ export const Projects = () => {
     
   }
 
-  const router = useRouter();
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch(
-      getProjects()
-    )
-  }, [dispatch])
-
-
-  const list = useSelector((state:ProjectState) => state.projects.list);
-  
-  if (list.length == 0) {
-    return (
-      <Loader />
-    )
-  }
-
+  const router = useRouter()
 
   return (
     <>
@@ -74,7 +59,7 @@ export const Projects = () => {
       </Head>
 
         <div ref={ref} className={css.cards} >
-          {withPagination.render(countOnPage, list, (sorteredList) => {
+          {withPagination.render(countOnPage, content, (sorteredList) => {
                 return sorteredList[currentPage].map((n) => {
                   return (
                       <Link key={n.id} href={`/projects/${n.id}`}>
@@ -96,7 +81,7 @@ export const Projects = () => {
         <PaginationPanel 
           setCurrentPage={setterCurrentPage} 
           countOnPage={countOnPage} 
-          items={list} 
+          items={content} 
           currentPage={currentPage}
         />
         </div>
@@ -104,5 +89,5 @@ export const Projects = () => {
   )
 }
     
-  export default Projects;
+  export default WithLoader(Projects, getProjects, 'projects', 'list');
 

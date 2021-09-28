@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import {createMarkup} from '../../../utils/createMarkup'
 
 
-export const Paper = ({ content }) => {
+const Paper = ({ content }) => {
 
   const router = useRouter();
 
